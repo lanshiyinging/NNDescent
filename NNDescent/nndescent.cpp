@@ -87,7 +87,51 @@ int NNDescent::getNBGraph(const unsigned int smplNum)
 {
     ///Collect the old neighbors and new neighbors from each sample's neighborhood (including reverse neighbors)
     ///put them into nbGraph
-
+    unsigned int i, j, l;
+    for(i = 0; i < this->ndat; ++ i){
+        vector<MiniNN> nb = this->knnGraph[i];
+        vector<unsigned int> newnb;
+        vector<unsigned int> oldnb;
+        for(j = 0; j < this->ndim; ++ j){
+            if(nb[j].nw){
+                newnb.push_back(nb[j].idx);
+                nb[j].nw = 0;
+            }
+            else
+                oldnb.push_back(nb[j].idx);
+            vector<MiniNN> nnb = this->knnGraph[nb[j].idx];
+            for(l = 0; l < this->ndim; ++ l){
+                if(nnb[l].idx == i)
+                    break;
+            }
+            if(l == this->ndim)
+                this->nbGraph[j].rnewnb.push_back(i);
+        }
+        this->nbGraph[i].oldnb = oldnb;
+        this->nbGraph[i].newnb = newnb;
+    }
+    for(i = 0; i < this->ndat; ++ i){
+        int rnsize = static_cast<int>(this->nbGraph[i].rnewnb.size());
+        int rosize = static_cast<int>(this->nbGraph[i].roldnb.size());
+        if(this->nbGraph[i].rold == 0 && this->nbGraph[i].rnew == 0)
+            continue;
+        vector<unsigned int> rnewnb;
+        vector<unsigned int> roldnb;
+        for(j = 0; j < this->nbGraph[i].rnew; ++ j){
+            this->nbGraph[i].roldnb.push_back(this->nbGraph[i].rnewnb[j]);
+        }
+        for(j = this->nbGraph[i].rnew; j < rnsize; ++ j){
+            vector<unsigned int>::iterator iter = find(this->nbGraph[i].roldnb.begin(), this->nbGraph[i].roldnb.end(), this->nbGraph[i].rnewnb[j]);
+            if(iter != this->nbGraph[i].roldnb.end())
+                roldnb.push_back(this->nbGraph[i].rnewnb[j]);
+            else
+                rnewnb.push_back(this->nbGraph[i].rnewnb[j]);
+        }
+        this->nbGraph[i].rnewnb = rnewnb;
+        this->nbGraph[i].roldnb = roldnb;
+        this->nbGraph[i].rnew = static_cast<unsigned short>(rnewnb.size());
+        this->nbGraph[i].rold = static_cast<unsigned short>(roldnb.size());
+    }
     return 0;
 }
 
@@ -140,6 +184,33 @@ unsigned NNDescent::nnDescent()
 
     ///Perform cross-comparison between old and new neighbors, and in-between new neighbors
     ///Call updateLst(.) to insert newly produced <a, b, dst> tuples into knnGraph
+    for(i = 0; i < this->ndat; ++ i){
+        vector<unsigned int> newnb = this->nbGraph[i].newnb;
+        vector<unsigned int> oldnb = this->nbGraph[i].oldnb;
+        for(j = 0; j < this->nbGraph[i].rnew; ++ j)
+            newnb.push_back(this->nbGraph[i].rnewnb[j]);
+        for(j = 0; j < this->nbGraph[i].rold; ++ j)
+            oldnb.push_back(this->nbGraph[i].roldnb[j]);
+        //cross-comparison between old and new
+        for(j = 0; j < newnb.size(); ++ j){
+            for(k = 0; k < oldnb.size(); ++ k){
+                dst = DistMsr::l2f(data, newnb[j], data, oldnb[k], this->ndim);
+                updateLst(newnb[j], oldnb[k], dst);
+                updateLst(oldnb[k], newnb[j], dst);
+                ccmps += 2;
+            }
+        }
+        //cross-comparison in-between new
+        for(a = 0; a < newnb.size(); ++ a){
+            for(b = a+1; b < newnb.size(); ++ b){
+                dst = DistMsr::l2f(data, newnb[a], data, newnb[b], this->ndim);
+                updateLst(newnb[a], newnb[b], dst);
+                updateLst(newnb[b], newnb[a], dst);
+                ccmps += 2;
+            }
+        }
+
+    }
 
     return ccmps;
 }
@@ -163,6 +234,7 @@ int NNDescent::buildKNNGraph(const char *srcFn, const char *dstFn, const unsigne
     {
         getNBGraph(100);
         ccmps = nnDescent();
+        this->nCmps += ccmps;
         Cleaner::clearNbs(this->nbGraph);
         i++;
     }while(i < 6 && ccmps > 512);
@@ -205,7 +277,7 @@ NNDescent::~NNDescent()
 void NNDescent::test()
 {
     const char *srcFn = "/home/wlzhao/datasets/bignn/mirproj/sift100k.txt";
-    const char *dstFn = "/home/wlzhao/datasets/bignn/mirproj/hi.txt";
+    const char *dstFn = "/home/wlzhao/datasets/bignn/mirproj/sift100k_40.txt";
 
     NNDescent *mynn = new NNDescent();
     int k = 40;

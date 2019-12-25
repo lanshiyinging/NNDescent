@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="NNDescent"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="NNDescent">
+				<Option output="/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/cmake-build-debug/NNDescent" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.1/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/cmake-build-debug/Makefile&quot;  VERBOSE=1 NNDescent"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="NNDescent/fast">
+				<Option output="/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/cmake-build-debug/NNDescent" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.1/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/cmake-build-debug/Makefile&quot;  VERBOSE=1 NNDescent/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/Makefile">
+			<Option target="NNDescent"/>
+		</Unit>
+		<Unit filename="/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/NNDescent.cbp">
+			<Option target="NNDescent"/>
+		</Unit>
+		<Unit filename="/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/NNDescent.depend">
+			<Option target="NNDescent"/>
+		</Unit>
+		<Unit filename="/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/NNDescent.layout">
+			<Option target="NNDescent"/>
+		</Unit>
+		<Unit filename="/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/cleaner.cpp">
+			<Option target="NNDescent"/>
+		</Unit>
+		<Unit filename="/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/cleaner.h">
+			<Option target="NNDescent"/>
+		</Unit>
+		<Unit filename="/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/data/sift100k.txt">
+			<Option target="NNDescent"/>
+		</Unit>
+		<Unit filename="/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/data/sift100k_gold_knn30.txt">
+			<Option target="NNDescent"/>
+		</Unit>
+		<Unit filename="/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/distmsr.cpp">
+			<Option target="NNDescent"/>
+		</Unit>
+		<Unit filename="/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/distmsr.h">
+			<Option target="NNDescent"/>
+		</Unit>
+		<Unit filename="/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/evaluator.cpp">
+			<Option target="NNDescent"/>
+		</Unit>
+		<Unit filename="/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/evaluator.h">
+			<Option target="NNDescent"/>
+		</Unit>
+		<Unit filename="/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/iodelegator.cpp">
+			<Option target="NNDescent"/>
+		</Unit>
+		<Unit filename="/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/iodelegator.h">
+			<Option target="NNDescent"/>
+		</Unit>
+		<Unit filename="/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/main.cpp">
+			<Option target="NNDescent"/>
+		</Unit>
+		<Unit filename="/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/nndescent.cpp">
+			<Option target="NNDescent"/>
+		</Unit>
+		<Unit filename="/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/nndescent.h">
+			<Option target="NNDescent"/>
+		</Unit>
+		<Unit filename="/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/nnitem.h">
+			<Option target="NNDescent"/>
+		</Unit>
+		<Unit filename="/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/vstring.cpp">
+			<Option target="NNDescent"/>
+		</Unit>
+		<Unit filename="/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/vstring.h">
+			<Option target="NNDescent"/>
+		</Unit>
+		<Unit filename="/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
