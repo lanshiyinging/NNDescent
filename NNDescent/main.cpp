@@ -13,6 +13,15 @@ void test()
 
 int main()
 {
+    /*
+    clock_t start, finish;
+    double totaltime;
+    start = clock();
     test();
+    finish = clock();
+    totaltime = (double)(finish-start)/CLOCKS_PER_SEC;
+    cout << totaltime << endl;
+     */
+    
     return 0;
 }

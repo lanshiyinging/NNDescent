@@ -87,32 +87,42 @@ int NNDescent::getNBGraph(const unsigned int smplNum)
 {
     ///Collect the old neighbors and new neighbors from each sample's neighborhood (including reverse neighbors)
     ///put them into nbGraph
-    unsigned int i, j, l;
+    unsigned int i, j, l, s;
     for(i = 0; i < this->ndat; ++ i){
-        vector<MiniNN> nb = this->knnGraph[i];
+        //vector<MiniNN> nb = this->knnGraph[i];
         vector<unsigned int> newnb;
         vector<unsigned int> oldnb;
-        for(j = 0; j < this->ndim; ++ j){
-            if(nb[j].nw){
-                newnb.push_back(nb[j].idx);
-                nb[j].nw = 0;
+        for(j = 0; j < this->k0; ++ j){
+            if(this->knnGraph[i][j].nw){
+                newnb.push_back(this->knnGraph[i][j].idx);
+                this->knnGraph[i][j].nw = 0;
+
+                //reverted neighbor
+                vector<MiniNN> nnb = this->knnGraph[this->knnGraph[i][j].idx];
+                for(l = 0; l < this->k0; ++ l){
+                    if(nnb[l].idx == i)
+                        break;
+                }
+                if(l == this->k0)
+                    this->nbGraph[this->knnGraph[i][j].idx].rnewnb.push_back(i);
             }
             else
-                oldnb.push_back(nb[j].idx);
+                oldnb.push_back(this->knnGraph[i][j].idx);
+            /*
             vector<MiniNN> nnb = this->knnGraph[nb[j].idx];
-            for(l = 0; l < this->ndim; ++ l){
+            for(l = 0; l < this->k0; ++ l){
                 if(nnb[l].idx == i)
                     break;
             }
-            if(l == this->ndim)
+            if(l == this->k0)
                 this->nbGraph[j].rnewnb.push_back(i);
+                */
         }
         this->nbGraph[i].oldnb = oldnb;
         this->nbGraph[i].newnb = newnb;
     }
     for(i = 0; i < this->ndat; ++ i){
         int rnsize = static_cast<int>(this->nbGraph[i].rnewnb.size());
-        int rosize = static_cast<int>(this->nbGraph[i].roldnb.size());
         if(this->nbGraph[i].rold == 0 && this->nbGraph[i].rnew == 0)
             continue;
         vector<unsigned int> rnewnb;
@@ -127,11 +137,31 @@ int NNDescent::getNBGraph(const unsigned int smplNum)
             else
                 rnewnb.push_back(this->nbGraph[i].rnewnb[j]);
         }
+        /*
+        if(rnewnb.size() + roldnb.size() > smplNum){
+            std::random_device rd;
+            std::mt19937 gen(rd());
+            int rsize = rnewnb.size() + roldnb.size() - 1;
+            std::uniform_int_distribution<> dis(0, rsize);
+            vector<int> idxs;
+            for(s = 0; s < smplNum; ++ s){
+                int idx = dis(gen);
+                while(find(idxs.begin(), idxs.end(), idx) != idxs.end())
+                    idx = dis(gen);
+                idxs.push_back(idx);
+                if(idx < rnewnb.size())
+                    this->nbGraph[i].rnewnb.push_back(rnewnb[idx]);
+                else
+                    this->nbGraph[i].roldnb.push_back(roldnb[idx-rnewnb.size()]);
+            }
+        }
+         */
         this->nbGraph[i].rnewnb = rnewnb;
         this->nbGraph[i].roldnb = roldnb;
         this->nbGraph[i].rnew = static_cast<unsigned short>(rnewnb.size());
         this->nbGraph[i].rold = static_cast<unsigned short>(roldnb.size());
     }
+
     return 0;
 }
 
@@ -197,7 +227,7 @@ unsigned NNDescent::nnDescent()
                 dst = DistMsr::l2f(data, newnb[j], data, oldnb[k], this->ndim);
                 updateLst(newnb[j], oldnb[k], dst);
                 updateLst(oldnb[k], newnb[j], dst);
-                ccmps += 2;
+                ccmps += 1;
             }
         }
         //cross-comparison in-between new
@@ -206,7 +236,7 @@ unsigned NNDescent::nnDescent()
                 dst = DistMsr::l2f(data, newnb[a], data, newnb[b], this->ndim);
                 updateLst(newnb[a], newnb[b], dst);
                 updateLst(newnb[b], newnb[a], dst);
-                ccmps += 2;
+                ccmps += 1;
             }
         }
 
@@ -238,7 +268,7 @@ int NNDescent::buildKNNGraph(const char *srcFn, const char *dstFn, const unsigne
         Cleaner::clearNbs(this->nbGraph);
         i++;
     }while(i < 6 && ccmps > 512);
-    cout<<"\n";
+    cout<< i << "\n";
     rate = (nCmps*2.0)/(ndat*(ndat-1));
     cout<<"The scanning rate is: "<<rate<<endl;
 
@@ -276,8 +306,8 @@ NNDescent::~NNDescent()
 
 void NNDescent::test()
 {
-    const char *srcFn = "/home/wlzhao/datasets/bignn/mirproj/sift100k.txt";
-    const char *dstFn = "/home/wlzhao/datasets/bignn/mirproj/sift100k_40.txt";
+    const char *srcFn = "/home/sylan/lanshiying/multimedia/project2/NNDescent/NNDescent/data/sift100k.txt";
+    const char *dstFn = "/home/sylan/lanshiying/multimedia/project2/NNDescent/NNDescent/result/sift100k_k=40.txt";
 
     NNDescent *mynn = new NNDescent();
     int k = 40;

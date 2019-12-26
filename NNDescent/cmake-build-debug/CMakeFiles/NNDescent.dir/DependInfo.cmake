@@ -4,15 +4,15 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/cleaner.cpp" "/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/cmake-build-debug/CMakeFiles/NNDescent.dir/cleaner.cpp.o"
-  "/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/distmsr.cpp" "/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/cmake-build-debug/CMakeFiles/NNDescent.dir/distmsr.cpp.o"
-  "/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/evaluator.cpp" "/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/cmake-build-debug/CMakeFiles/NNDescent.dir/evaluator.cpp.o"
-  "/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/iodelegator.cpp" "/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/cmake-build-debug/CMakeFiles/NNDescent.dir/iodelegator.cpp.o"
-  "/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/main.cpp" "/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/cmake-build-debug/CMakeFiles/NNDescent.dir/main.cpp.o"
-  "/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/nndescent.cpp" "/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/cmake-build-debug/CMakeFiles/NNDescent.dir/nndescent.cpp.o"
-  "/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/vstring.cpp" "/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/cmake-build-debug/CMakeFiles/NNDescent.dir/vstring.cpp.o"
+  "/home/sylan/lanshiying/multimedia/project2/NNDescent/NNDescent/cleaner.cpp" "/home/sylan/lanshiying/multimedia/project2/NNDescent/NNDescent/cmake-build-debug/CMakeFiles/NNDescent.dir/cleaner.cpp.o"
+  "/home/sylan/lanshiying/multimedia/project2/NNDescent/NNDescent/distmsr.cpp" "/home/sylan/lanshiying/multimedia/project2/NNDescent/NNDescent/cmake-build-debug/CMakeFiles/NNDescent.dir/distmsr.cpp.o"
+  "/home/sylan/lanshiying/multimedia/project2/NNDescent/NNDescent/evaluator.cpp" "/home/sylan/lanshiying/multimedia/project2/NNDescent/NNDescent/cmake-build-debug/CMakeFiles/NNDescent.dir/evaluator.cpp.o"
+  "/home/sylan/lanshiying/multimedia/project2/NNDescent/NNDescent/iodelegator.cpp" "/home/sylan/lanshiying/multimedia/project2/NNDescent/NNDescent/cmake-build-debug/CMakeFiles/NNDescent.dir/iodelegator.cpp.o"
+  "/home/sylan/lanshiying/multimedia/project2/NNDescent/NNDescent/main.cpp" "/home/sylan/lanshiying/multimedia/project2/NNDescent/NNDescent/cmake-build-debug/CMakeFiles/NNDescent.dir/main.cpp.o"
+  "/home/sylan/lanshiying/multimedia/project2/NNDescent/NNDescent/nndescent.cpp" "/home/sylan/lanshiying/multimedia/project2/NNDescent/NNDescent/cmake-build-debug/CMakeFiles/NNDescent.dir/nndescent.cpp.o"
+  "/home/sylan/lanshiying/multimedia/project2/NNDescent/NNDescent/vstring.cpp" "/home/sylan/lanshiying/multimedia/project2/NNDescent/NNDescent/cmake-build-debug/CMakeFiles/NNDescent.dir/vstring.cpp.o"
   )
-set(CMAKE_CXX_COMPILER_ID "AppleClang")
+set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH

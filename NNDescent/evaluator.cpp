@@ -207,8 +207,8 @@ void Evaluator::clear_grdmap(map<string, set<string>* > &grdmap)
 
 void Evaluator::test()
 {
-    const char *knngrd1  = "/home/wlzhao/datasets/bignn/mirproj/sift100k_gold_knn30.txt";
-    const char *knnsrc1  = "/home/wlzhao/datasets/bignn/mirproj/sift100k_k=40.txt";
+    const char *knngrd1  = "/home/sylan/lanshiying/multimedia/project2/NNDescent/NNDescent/data/sift100k_gold_knn30.txt";
+    const char *knnsrc1  = "/home/sylan/lanshiying/multimedia/project2/NNDescent/NNDescent/result/sift100k_k=40.txt";
     const char *knngrd2  = "/home/wlzhao/datasets/gist1m_gold_knn30.txt";
     const char *knnsrc2  = "/home/wlzhao/datasets/gist1m_k=40.txt";
     const char *knngrd3  = "/home/wlzhao/datasets/rand1m_gold_knn30.txt";
