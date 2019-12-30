@@ -8,12 +8,11 @@ using namespace std;
 void test()
 {
     NNDescent::test();
-    ///Evaluator::test();
+    Evaluator::test();
 }
 
 int main()
 {
-    /*
     clock_t start, finish;
     double totaltime;
     start = clock();
@@ -21,7 +20,6 @@ int main()
     finish = clock();
     totaltime = (double)(finish-start)/CLOCKS_PER_SEC;
     cout << totaltime << endl;
-     */
     
     return 0;
 }

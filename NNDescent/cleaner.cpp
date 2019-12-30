@@ -20,6 +20,8 @@ void Cleaner::clearNbs(vector<NbHood> &nbGraph)
         nbGraph[i].oldnb.clear();
         nbGraph[i].rnewnb.clear();
         nbGraph[i].roldnb.clear();
+        nbGraph[i].rold = 0;
+        nbGraph[i].rnew = 0;
     }
 }
 

@@ -1,3 +1,3 @@
-/home/sylan/lanshiying/multimedia/project2/NNDescent/NNDescent/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/sylan/lanshiying/multimedia/project2/NNDescent/NNDescent/cmake-build-debug/CMakeFiles/NNDescent.dir
-/home/sylan/lanshiying/multimedia/project2/NNDescent/NNDescent/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/lansy/Desktop/mir/experience/project2-NNDescent/NNDescent/NNDescent/cmake-build-debug/CMakeFiles/NNDescent.dir

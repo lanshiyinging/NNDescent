@@ -89,78 +89,61 @@ int NNDescent::getNBGraph(const unsigned int smplNum)
     ///put them into nbGraph
     unsigned int i, j, l, s;
     for(i = 0; i < this->ndat; ++ i){
-        //vector<MiniNN> nb = this->knnGraph[i];
-        vector<unsigned int> newnb;
-        vector<unsigned int> oldnb;
         for(j = 0; j < this->k0; ++ j){
-            if(this->knnGraph[i][j].nw){
-                newnb.push_back(this->knnGraph[i][j].idx);
-                this->knnGraph[i][j].nw = 0;
-
-                //reverted neighbor
-                vector<MiniNN> nnb = this->knnGraph[this->knnGraph[i][j].idx];
-                for(l = 0; l < this->k0; ++ l){
-                    if(nnb[l].idx == i)
-                        break;
-                }
-                if(l == this->k0)
-                    this->nbGraph[this->knnGraph[i][j].idx].rnewnb.push_back(i);
-            }
-            else
-                oldnb.push_back(this->knnGraph[i][j].idx);
-            /*
-            vector<MiniNN> nnb = this->knnGraph[nb[j].idx];
+            vector<MiniNN> nnb = this->knnGraph[this->knnGraph[i][j].idx];
             for(l = 0; l < this->k0; ++ l){
                 if(nnb[l].idx == i)
                     break;
             }
-            if(l == this->k0)
-                this->nbGraph[j].rnewnb.push_back(i);
-                */
+
+            if(this->knnGraph[i][j].nw == 1){
+                this->nbGraph[i].newnb.push_back(this->knnGraph[i][j].idx);
+                this->knnGraph[i][j].nw = 0;
+                if(l >= this->k0 && this->nbGraph[this->knnGraph[i][j].idx].rnew + this->nbGraph[this->knnGraph[i][j].idx].rold < smplNum){
+                    this->nbGraph[this->knnGraph[i][j].idx].rnewnb.push_back(i);
+                    this->nbGraph[this->knnGraph[i][j].idx].rnew ++;
+                }
+            }
+            else{
+                this->nbGraph[i].oldnb.push_back(this->knnGraph[i][j].idx);
+                if(l >= this->k0 && this->nbGraph[this->knnGraph[i][j].idx].rnew + this->nbGraph[this->knnGraph[i][j].idx].rold < smplNum){
+                    this->nbGraph[this->knnGraph[i][j].idx].roldnb.push_back(i);
+                    this->nbGraph[this->knnGraph[i][j].idx].rold ++;
+                }
+            }
         }
-        this->nbGraph[i].oldnb = oldnb;
-        this->nbGraph[i].newnb = newnb;
     }
+
+    /*
     for(i = 0; i < this->ndat; ++ i){
-        int rnsize = static_cast<int>(this->nbGraph[i].rnewnb.size());
-        if(this->nbGraph[i].rold == 0 && this->nbGraph[i].rnew == 0)
-            continue;
-        vector<unsigned int> rnewnb;
-        vector<unsigned int> roldnb;
-        for(j = 0; j < this->nbGraph[i].rnew; ++ j){
-            this->nbGraph[i].roldnb.push_back(this->nbGraph[i].rnewnb[j]);
-        }
-        for(j = this->nbGraph[i].rnew; j < rnsize; ++ j){
-            vector<unsigned int>::iterator iter = find(this->nbGraph[i].roldnb.begin(), this->nbGraph[i].roldnb.end(), this->nbGraph[i].rnewnb[j]);
-            if(iter != this->nbGraph[i].roldnb.end())
-                roldnb.push_back(this->nbGraph[i].rnewnb[j]);
-            else
-                rnewnb.push_back(this->nbGraph[i].rnewnb[j]);
-        }
-        /*
-        if(rnewnb.size() + roldnb.size() > smplNum){
+        int rnew = this->nbGraph[i].rnewnb.size();
+        int rold = this->nbGraph[i].roldnb.size();
+        int rsize = rnew + rold;
+        vector<unsigned int> srnewnb;
+        vector<unsigned int> sroldnb;
+        if(rsize > smplNum){
             std::random_device rd;
             std::mt19937 gen(rd());
-            int rsize = rnewnb.size() + roldnb.size() - 1;
-            std::uniform_int_distribution<> dis(0, rsize);
+            std::uniform_int_distribution<> dis(0, rsize-1);
             vector<int> idxs;
             for(s = 0; s < smplNum; ++ s){
                 int idx = dis(gen);
                 while(find(idxs.begin(), idxs.end(), idx) != idxs.end())
                     idx = dis(gen);
                 idxs.push_back(idx);
-                if(idx < rnewnb.size())
-                    this->nbGraph[i].rnewnb.push_back(rnewnb[idx]);
+                if(idx < rnew)
+                    srnewnb.push_back(this->nbGraph[i].rnewnb[idx]);
                 else
-                    this->nbGraph[i].roldnb.push_back(roldnb[idx-rnewnb.size()]);
+                    sroldnb.push_back(this->nbGraph[i].roldnb[idx-rnew]);
             }
         }
-         */
-        this->nbGraph[i].rnewnb = rnewnb;
-        this->nbGraph[i].roldnb = roldnb;
-        this->nbGraph[i].rnew = static_cast<unsigned short>(rnewnb.size());
-        this->nbGraph[i].rold = static_cast<unsigned short>(roldnb.size());
+
+        this->nbGraph[i].rnewnb = srnewnb;
+        this->nbGraph[i].roldnb = sroldnb;
+        this->nbGraph[i].rnew = static_cast<unsigned short>(srnewnb.size());
+        this->nbGraph[i].rold = static_cast<unsigned short>(sroldnb.size());
     }
+    */
 
     return 0;
 }
@@ -217,9 +200,9 @@ unsigned NNDescent::nnDescent()
     for(i = 0; i < this->ndat; ++ i){
         vector<unsigned int> newnb = this->nbGraph[i].newnb;
         vector<unsigned int> oldnb = this->nbGraph[i].oldnb;
-        for(j = 0; j < this->nbGraph[i].rnew; ++ j)
+        for(j = 0; j < this->nbGraph[i].rnewnb.size(); ++ j)
             newnb.push_back(this->nbGraph[i].rnewnb[j]);
-        for(j = 0; j < this->nbGraph[i].rold; ++ j)
+        for(j = 0; j < this->nbGraph[i].roldnb.size(); ++ j)
             oldnb.push_back(this->nbGraph[i].roldnb[j]);
         //cross-comparison between old and new
         for(j = 0; j < newnb.size(); ++ j){
@@ -265,6 +248,7 @@ int NNDescent::buildKNNGraph(const char *srcFn, const char *dstFn, const unsigne
         getNBGraph(100);
         ccmps = nnDescent();
         this->nCmps += ccmps;
+        cout << i <<'\t'<<ccmps << endl;
         Cleaner::clearNbs(this->nbGraph);
         i++;
     }while(i < 6 && ccmps > 512);
@@ -306,8 +290,8 @@ NNDescent::~NNDescent()
 
 void NNDescent::test()
 {
-    const char *srcFn = "/home/sylan/lanshiying/multimedia/project2/NNDescent/NNDescent/data/sift100k.txt";
-    const char *dstFn = "/home/sylan/lanshiying/multimedia/project2/NNDescent/NNDescent/result/sift100k_k=40.txt";
+    const char *srcFn = "../data/sift100k.txt";
+    const char *dstFn = "../result/sift100k_k=40.txt";
 
     NNDescent *mynn = new NNDescent();
     int k = 40;
